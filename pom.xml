@@ -6,47 +6,53 @@
 	<packaging>war</packaging>
 	<version>1.0</version>
 	<name>twiliotest</name>
-    
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.7</maven.compiler.source>
-        <maven.compiler.target>1.7</maven.compiler.target>
-    </properties>
 	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.compiler.target>1.7</maven.compiler.target>
+	</properties>
+
 	<repositories>
-		<repository>
-			<id>eap</id><url>http://maven.repository.redhat.com/techpreview/all</url>
-			<releases><enabled>true</enabled></releases><snapshots><enabled>false</enabled></snapshots>
-		</repository>
 		<repository>
 			<id>maven</id><url>http://repo1.maven.org/maven2</url>
             <releases><enabled>true</enabled></releases><snapshots><enabled>false</enabled></snapshots>
 		</repository>
 	</repositories>
-	
+
 	<pluginRepositories>
 		<pluginRepository>
 			<id>eap</id><url>http://maven.repository.redhat.com/techpreview/all</url>
             <releases><enabled>true</enabled></releases><snapshots><enabled>false</enabled></snapshots>
 		</pluginRepository>
-		
 		<pluginRepository>
 			<id>maven</id><url>http://repo1.maven.org/maven2</url>
             <releases><enabled>true</enabled></releases><snapshots><enabled>false</enabled></snapshots>
 		</pluginRepository>
 	</pluginRepositories>
-	
+
 	<dependencies>
-		<dependency><groupId>log4j</groupId><artifactId>log4j</artifactId><version>1.2.17</version></dependency>
+		<!-- Disabling Default DB Connector Dependencies -->
+		<!-- <dependency><groupId>org.postgresql</groupId><artifactId>postgresql</artifactId><version>9.2-1003-jdbc4</version></dependency>
+		<dependency><groupId>mysql</groupId><artifactId>mysql-connector-java</artifactId><version>5.1.25</version></dependency> -->
+		<dependency><groupId>com.twilio.sdk</groupId><artifactId>twilio-java-sdk</artifactId><version>6.3.0</version></dependency>
+		<dependency><groupId>log4j</groupId><artifactId>log4j</artifactId><version>1.2.15</version>
+			<exclusions>
+				<exclusion><groupId>com.sun.jmx</groupId><artifactId>jmxri</artifactId></exclusion>
+				<exclusion><groupId>com.sun.jdmk</groupId><artifactId>jmxtools</artifactId></exclusion>
+				<exclusion><groupId>javax.jms</groupId><artifactId>jms</artifactId></exclusion>
+			</exclusions>
+		</dependency>
 		<dependency><groupId>javax.servlet</groupId><artifactId>javax.servlet-api</artifactId><version>3.0.1</version><scope>provided</scope></dependency>
 		<dependency><groupId>com.sun.jersey</groupId><artifactId>jersey-json</artifactId><version>1.19</version></dependency>
 		<dependency><groupId>com.sun.jersey</groupId><artifactId>jersey-servlet</artifactId><version>1.19</version></dependency>
 		<dependency><groupId>javax.servlet</groupId><artifactId>jstl</artifactId><version>1.2</version></dependency>
 		<dependency><groupId>commons-io</groupId><artifactId>commons-io</artifactId><version>2.4</version></dependency>
-		<dependency><groupId>com.twilio.sdk</groupId><artifactId>twilio-java-sdk</artifactId><version>6.3.0</version></dependency>
 	</dependencies>
 	
 	<profiles><profile>
+		<!-- By default that is to put the resulting archive into the 'webapps' folder. -->
+		<!-- http://maven.apache.org/guides/mini/guide-building-for-different-environments.html -->
 		<id>openshift</id>
 		<build><finalName>twiliotest</finalName><plugins><plugin>
 			<artifactId>maven-war-plugin</artifactId><version>2.1.1</version>
