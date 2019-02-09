@@ -1,0 +1,113 @@
+html,body {
+	background-color: #22264b;
+    font-family: calibri, verdana, arial;
+	margin: 0;
+	padding: 0;
+}
+
+div {
+	color: white;
+	font-size: 16px;
+}
+
+a:link {
+    color: #0092d7;
+}
+
+a:hover {
+    color: #e51c23;
+}
+
+a:active {
+    color: lime;
+}
+
+a:visited {
+    color: red;
+}
+
+.header {
+	border-bottom: 3px solid #e51c23;
+	color: white;
+	font-size: 20px;
+}
+
+.content-header {
+    border-bottom: 3px solid #e51c23;
+    color: white;
+    font-size: 20px;
+}
+
+.body {
+	background-color: transparent;
+	min-height: 555px;
+}
+
+.navigation {
+	background-color: #202020;
+	float: left;
+	min-width: 20%;
+	min-height: inherit;
+}
+
+.menu-tab {
+	border-bottom: 2px solid #e51c23;
+	clear: both;
+	display: inline;
+	float: left;
+	min-width: 100%;
+	padding-top: 1em;
+	padding-bottom: 1em;
+	text-align: center;
+}
+
+.menu-tab a {
+	padding-left: 1.5em;
+	padding-right: 1.5em;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+.content {
+	max-height: 555px;
+	min-height: inherit;
+	overflow: auto;
+}
+
+.content-body {
+	margin-left: 30px;
+	margin-top: 30px;
+}
+
+.footer {
+    background-color: #202020;
+    border-top: 5px solid #0092d7;
+    width: 100%;
+}
+
+.container {
+	border-color: teal;
+	border-style: solid;
+	border-width: thick;
+	border-radius: 5px;
+}
+
+.btn{
+	
+}
+
+.ipt{
+    
+}
+
+.lbl{
+    font-family: calibri;
+    font-size: 14px;
+    font-style: oblique;
+    font-variant: small-caps;
+    font-weight: bold;
+}
+
+.txt{
+    
+}

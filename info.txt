@@ -1,0 +1,2 @@
+root :: /var/lib/openshift/57d433727628e1927b000051/
+logs :: /var/lib/openshift/57d433727628e1927b000051/app-root/logs/

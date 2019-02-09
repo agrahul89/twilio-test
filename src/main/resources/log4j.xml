@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration>
+
+	<appender name="allLogsFile" class="org.apache.log4j.RollingFileAppender">
+		<param name="Append" value="true" />
+		<param name="maxFileSize" value="2048KB" />
+		<param name="maxBackupIndex" value="1" />
+		<param name="File" value="/var/lib/openshift/57d433727628e1927b000051/app-root/logs/twitest.log" />
+		<param name="threshold" value="info" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d{yyyy-MM-dd HH:mm:ss.SSS zzz} %5p %c{1}:%L - %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="info" />
+			<param name="levelMax" value="fatal" />
+		</filter>
+	</appender>
+
+	<appender name="debugConsole" class="org.apache.log4j.ConsoleAppender">
+		<param name="threshold" value="debug" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d{yyyy-MM-dd HH:mm:ss.SSS zzz} %5p %c{1}:%L - %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="info" />
+			<param name="levelMax" value="fatal" />
+		</filter>
+	</appender>
+
+	<logger name="org.apache" additivity="false">
+		<level value="debug" />
+		<appender-ref ref="debugConsole" />
+		<appender-ref ref="allLogsFile" />
+	</logger>
+<!--
+	<logger name="java.sql" additivity="false">
+		<level value="debug" />
+		<appender-ref ref="debugConsole" />
+		<appender-ref ref="allLogsFile" />
+	</logger>
+
+	<logger name="org.hibernate" additivity="false">
+		<level value="error" />
+		<appender-ref ref="debugConsole" />
+		<appender-ref ref="allLogsFile" />
+	</logger>
+
+	<logger name="org.hibernate.SQL" additivity="false">
+		<level value="debug" />
+		<appender-ref ref="debugConsole" />
+		<appender-ref ref="allLogsFile" />
+	</logger>
+
+	<logger name="org.hibernate.tool.hbm2ddl" additivity="false">
+		<level value="debug" />
+		<appender-ref ref="allLogsFile" />
+	</logger>
+-->
+	<root>
+		<priority value="info" />
+		<appender-ref ref="debugConsole" />
+		<appender-ref ref="allLogsFile" />
+	</root>
+
+</log4j:configuration>
